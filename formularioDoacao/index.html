@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações de Saúde</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Informações de Saúde</h1>
+        <p>(Responda com "Sim" ou "Não")</p>
+        <form id="formSaude">
+            <label>Está se sentindo bem de saúde hoje?</label><br>
+            <input type="radio" name="saude" value="sim"> Sim
+            <input type="radio" name="saude" value="não"> Não <br><br>
+
+            <label>Dormiu ao menos 6 horas na última noite?</label><br>
+            <input type="radio" name="dormiu" value="sim"> Sim
+            <input type="radio" name="dormiu" value="não"> Não <br><br>
+
+            <label>Está em jejum?</label><br>
+            <input type="radio" name="jejum" value="sim"> Sim
+            <input type="radio" name="jejum" value="não"> Não <br><br>
+
+            <label>Tomou alguma vacina recentemente?</label><br>
+            <input type="radio" name="vacina" value="sim"> Sim
+            <input type="radio" name="vacina" value="não"> Não <br><br>
+
+            <label>Teve febre ou sintomas gripais nos últimos 7 dias?</label><br>
+            <input type="radio" name="febre" value="sim"> Sim
+            <input type="radio" name="febre" value="não"> Não <br><br>
+
+            <label>Fez cirurgia, tatuagem ou piercing nos últimos 12 meses?</label><br>
+            <input type="radio" name="cirurgia" value="sim"> Sim
+            <input type="radio" name="cirurgia" value="não"> Não <br><br>
+
+            <label>Usou algum medicamento nos últimos 7 dias?</label><br>
+            <input type="radio" name="medicamento" value="sim"> Sim
+            <input type="radio" name="medicamento" value="não"> Não <br><br>
+
+            <label>Já teve doenças como hepatite, HIV, sífilis, malária ou Doença de Chagas?</label><br>
+            <input type="radio" name="doencas" value="sim"> Sim
+            <input type="radio" name="doencas" value="não"> Não <br><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const saude = document.querySelector('input[name="saude"]:checked')?.value;
+        const dormiu = document.querySelector('input[name="dormiu"]:checked')?.value;
+        const jejum = document.querySelector('input[name="jejum"]:checked')?.value;
+        const vacina = document.querySelector('input[name="vacina"]:checked')?.value;
+        const febre = document.querySelector('input[name="febre"]:checked')?.value;
+        const cirurgia = document.querySelector('input[name="cirurgia"]:checked')?.value;
+        const medicamento = document.querySelector('input[name="medicamento"]:checked')?.value;
+        const doencas = document.querySelector('input[name="doencas"]:checked')?.value;
+
+        const apto = 
+            saude === "sim" && 
+            dormiu === "sim" && 
+            jejum === "sim" &&
+            vacina === "não" &&
+            febre === "não" &&
+            cirurgia === "não" &&
+            medicamento === "não" &&
+            doencas === "não";
+
+        if (apto) {
+            window.location.href = "apto.html";
+        } else {
+            window.location.href = "naoapto.html";
+        }
+    });
+    </script>
+</body>
+</html>
